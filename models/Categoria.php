@@ -51,6 +51,43 @@ class Categoria extends Conectar {
         $sql->bindValue(1, $cat_nom);
         $sql->bindValue(2, $cat_obs);
         $sql->execute();
-        return $sql->rowCount(); // Devuelve el número de filas afectadas por la inserción.
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Actualiza una categoría existente en la base de datos.
+     *
+     * @param int $cat_id El ID de la categoría a actualizar.
+     * @param string $cat_nom El nuevo nombre de la categoría.
+     * @param string $cat_obs Las nuevas observaciones de la categoría.
+     * @return array Un array asociativo con los resultados de la actualización.
+     */
+    public function update_categoria($cat_id, $cat_nom, $cat_obs){
+        $conectar = parent::conexion();
+        parent::set_name();
+
+        $sql = "UPDATE tm_categoria SET cat_nom = ? , cat_obs = ? WHERE cat_id = ?";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $cat_nom);
+        $sql->bindValue(2, $cat_obs);
+        $sql->bindValue(3, $cat_id);
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Elimina una categoría de la base de datos.
+     *
+     * @param int $cat_id El ID de la categoría a eliminar.
+     * @return array Un array asociativo con los resultados de la eliminación.
+     */
+    public function e_categoria($cat_id){
+        $conectar = parent::conexion();
+        parent::set_name();
+        $sql = "DELETE FROM tm_categoria WHERE cat_id = ?";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $cat_id);
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 }
