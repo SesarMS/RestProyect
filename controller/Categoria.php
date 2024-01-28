@@ -20,4 +20,12 @@
             $datos=$categoria->insert_categoria($body['cat_nom'], $body['cat_obs']);
             echo json_encode('Correcto');
         break;
+        case "Update":
+            $datos=$categoria->update_categoria($body['cat_id'],$body['cat_nom'], $body['cat_obs']);
+            echo json_encode('Update correcto');
+        break;
+        case "Remove":
+            $datos=$categoria->remove_categoria($body['cat_id']);
+            echo json_encode('Remove correcto');
+        break;
     }
