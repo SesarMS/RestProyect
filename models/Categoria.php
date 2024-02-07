@@ -81,7 +81,7 @@ class Categoria extends Conectar {
      * @param int $cat_id El ID de la categoría a eliminar.
      * @return array Un array asociativo con los resultados de la eliminación.
      */
-    public function e_categoria($cat_id){
+    public function remove_categoria($cat_id){
         $conectar = parent::conexion();
         parent::set_name();
         $sql = "DELETE FROM tm_categoria WHERE cat_id = ?";
@@ -90,4 +90,43 @@ class Categoria extends Conectar {
         $sql->execute();
         return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
+
+     /**
+     * Añade un nuevo producto a una categoría específica.
+     *
+     * @param int $cat_id El ID de la categoría a la que se agregará el producto.
+     * @param string $producto_nombre Nombre del nuevo producto.
+     * @param string $producto_descripcion Descripción del nuevo producto.
+     * @return int El número de filas afectadas por la inserción.
+     */
+    public function agregar_producto_a_categoria($cat_id, $producto_nombre, $producto_descripcion) {
+        $conectar = parent::conexion();
+        parent::set_name();
+
+        $sql = "INSERT INTO tm_producto (CAT_ID, PRODUCTO_NOMBRE, PRODUCTO_DESCRIPCION) VALUES (?, ?, ?)";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $cat_id);
+        $sql->bindValue(2, $producto_nombre);
+        $sql->bindValue(3, $producto_descripcion);
+        $sql->execute();
+        return $sql->rowCount(); // Retorna el número de filas afectadas
+    }
+
+    /**
+     * Obtiene todos los productos de una categoría específica.
+     *
+     * @param int $cat_id El ID de la categoría.
+     * @return array Un array asociativo con los productos de la categoría.
+     */
+    public function obtener_productos_por_categoria($cat_id) {
+        $conectar = parent::conexion();
+        parent::set_name();
+
+        $sql = "SELECT * FROM tm_producto WHERE CAT_ID = ?";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $cat_id);
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }
