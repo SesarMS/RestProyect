@@ -103,13 +103,13 @@ class Categoria extends Conectar {
         $conectar = parent::conexion();
         parent::set_name();
 
-        $sql = "INSERT INTO tm_producto (CAT_ID, PRODUCTO_NOMBRE, PRODUCTO_DESCRIPCION) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO tm_producto ( PRODUCTO_NOMBRE, PRODUCTO_DESCRIPCION,CAT_ID) VALUES (?, ?, ?)";
         $sql = $conectar->prepare($sql);
-        $sql->bindValue(1, $cat_id);
-        $sql->bindValue(2, $producto_nombre);
-        $sql->bindValue(3, $producto_descripcion);
+        $sql->bindValue(1, $producto_nombre);
+        $sql->bindValue(2, $producto_descripcion);
+        $sql->bindValue(3, $cat_id);
         $sql->execute();
-        return $sql->rowCount(); // Retorna el número de filas afectadas
+        return $sql->rowCount();
     }
 
     /**
