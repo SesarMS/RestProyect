@@ -1,24 +1,25 @@
-// Función para cargar todas las categorías mediante AJAX
+
+// Función para cargar todas las categorías
 function cargarCategorias() {
-    var divRespuesta = document.getElementById('respuesta');
     $.ajax({
         url: 'controller/CategoriaController.php?op=GetAll',
         method: 'GET',
         dataType: 'json',
         success: function (data) {
-            // 'data' contiene la respuesta del servidor (categorías)
             console.log(data);
-            // Puedes manipular los datos como desees
-            divRespuesta.innerText = data.join(" ");
+            $('#respuesta').text('');
+            $('#respuesta').text(JSON.stringify(data, null, 2));
+            autoajustarTamañoTextarea();
         },
         error: function (error) {
             console.error('Error al cargar categorías:', error);
-            divRespuesta.innerText = 'Error al cargar categorías';
+            $('#respuesta').text('Error al cargar categorías.');
+            
         }
     });
 }
 
-// Función para obtener una categoría por ID mediante AJAX
+// Función para obtener una categoría por ID
 function obtenerCategoriaPorId(cat_id) {
     $.ajax({
         url: 'controller/CategoriaController.php?op=GetId',
@@ -26,19 +27,21 @@ function obtenerCategoriaPorId(cat_id) {
         contentType: 'application/json',
         data: JSON.stringify({ cat_id: cat_id }),
         success: function (data) {
-            // 'data' contiene la respuesta del servidor (categoría específica)
-            
             console.log(data);
-
-            // Puedes manipular los datos como desees
+            $('#respuesta').text('');
+            $('#respuesta').text(JSON.stringify(data, null, 2));
+            autoajustarTamañoTextarea();
         },
         error: function (error) {
             console.error('Error al obtener categoría por ID:', error);
+            $('#respuesta').text('');
+            $('#respuesta').text('Error al cargar categoría.');
+            autoajustarTamañoTextarea();
         }
     });
 }
 
-// Función para agregar una nueva categoría mediante AJAX
+// Función para agregar una nueva categoría
 function agregarCategoria(cat_nom, cat_obs) {
     $.ajax({
         url: './controller/CategoriaController.php?op=Insert',
@@ -46,17 +49,20 @@ function agregarCategoria(cat_nom, cat_obs) {
         contentType: 'application/json',
         data: JSON.stringify({ cat_nom: cat_nom, cat_obs: cat_obs }),
         success: function (response) {
-            // 'response' contiene la respuesta del servidor (mensaje de éxito)
             console.log(response);
-            // Puedes realizar acciones adicionales después de agregar la categoría
+            $('#respuesta').text('');
+            $('#respuesta').text('Agregado correctamente');
+            
         },
         error: function (error) {
             console.error('Error al agregar categoría:', error);
+            $('#respuesta').text('');
+            $('#respuesta').text('Error al agregar categoría');
         }
     });
 }
 
-// Función para actualizar una categoría mediante AJAX
+// Función para actualizar una categoría
 function actualizarCategoria(cat_id, cat_nom, cat_obs) {
     $.ajax({
         url: 'controller/CategoriaController.php?op=Update',
@@ -64,17 +70,20 @@ function actualizarCategoria(cat_id, cat_nom, cat_obs) {
         contentType: 'application/json',
         data: JSON.stringify({ cat_id: cat_id, cat_nom: cat_nom, cat_obs: cat_obs }),
         success: function (response) {
-            // 'response' contiene la respuesta del servidor (mensaje de éxito)
             console.log(response);
-            // Puedes realizar acciones adicionales después de actualizar la categoría
+            $('#respuesta').text('');
+            $('#respuesta').text('Actualizado correctamente.');
+            
         },
         error: function (error) {
             console.error('Error al actualizar categoría:', error);
+            $('#respuesta').text('');
+            $('#respuesta').text('Error al actualizar.');
         }
     });
 }
 
-// Función para eliminar una categoría mediante AJAX
+// Función para eliminar una categoría
 function eliminarCategoria(cat_id) {
     $.ajax({
         url: 'controller/CategoriaController.php?op=Remove',
@@ -82,17 +91,19 @@ function eliminarCategoria(cat_id) {
         contentType: 'application/json',
         data: JSON.stringify({ cat_id: cat_id }),
         success: function (response) {
-            // 'response' contiene la respuesta del servidor (mensaje de éxito)
-            console.log(response);
-            // Puedes realizar acciones adicionales después de eliminar la categoría
+            console.log(response);            
+            $('#respuesta').text('');
+            $('#respuesta').text('Eliminado correctamente.');
         },
         error: function (error) {
             console.error('Error al eliminar categoría:', error);
+            $('#respuesta').text('');
+            $('#respuesta').text('Error al eliminar.');
         }
     });
 }
 
-// Función para agregar un producto a una categoría mediante AJAX
+// Función para agregar un producto a una categoría
 function agregarProductoACategoria(cat_id, producto_nombre, producto_descripcion) {
     $.ajax({
         url: 'controller/CategoriaController.php?op=AddProducto',
@@ -104,9 +115,9 @@ function agregarProductoACategoria(cat_id, producto_nombre, producto_descripcion
             producto_descripcion: producto_descripcion
         }),
         success: function (response) {
-            // 'response' contiene la respuesta del servidor (mensaje de éxito)
-            console.log(response);
-            // Puedes realizar acciones adicionales después de agregar el producto a la categoría
+            console.log(response);            
+            $('#respuesta').text('');
+            $('#respuesta').text('Agregado producto a categoría correctamente.');
         },
         error: function (error) {
             console.error('Error al agregar producto a la categoría:', error);
@@ -114,7 +125,7 @@ function agregarProductoACategoria(cat_id, producto_nombre, producto_descripcion
     });
 }
 
-// Función para obtener productos por categoría mediante AJAX
+// Función para obtener productos por categoría
 function obtenerProductosPorCategoria(cat_id) {
     $.ajax({
         url: 'controller/CategoriaController.php?op=GetProductosPorCategoria',
@@ -122,12 +133,25 @@ function obtenerProductosPorCategoria(cat_id) {
         contentType: 'application/json',
         data: JSON.stringify({ cat_id: cat_id }),
         success: function (data) {
-            // 'data' contiene la respuesta del servidor (productos de la categoría)
             console.log(data);
-            // Puedes manipular los datos como desees
+            $('#respuesta').text('');
+            $('#respuesta').text(JSON.stringify(data, null, 2));
+            autoajustarTamañoTextarea();
+            
         },
         error: function (error) {
             console.error('Error al obtener productos por categoría:', error);
+            $('#respuesta').text('');
+            $('#respuesta').text('Error al obtener productos.');
         }
     });
+}
+
+
+// Ajustar automáticamente la altura del textarea según su contenido
+function autoajustarTamañoTextarea() {
+    var $textarea = $('#respuesta');
+    $textarea.height(0);
+    $textarea.height($textarea.prop('scrollHeight') + 5);
+
 }
