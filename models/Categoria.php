@@ -40,7 +40,7 @@ class Categoria extends Conectar {
      *
      * @param string $cat_nom Nombre de la nueva categoría.
      * @param string $cat_obs Observaciones de la nueva categoría.
-     * @return int El número de filas afectadas por la inserción.
+     * @return array Un array asociativo con los resultados de la inserción.
      */
     public function insert_categoria($cat_nom, $cat_obs) {
         $conectar = parent::conexion();
