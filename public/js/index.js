@@ -1,4 +1,3 @@
-
 // Función para cargar todas las categorías
 function cargarCategorias() {
     $.ajax({
