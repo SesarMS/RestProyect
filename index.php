@@ -17,39 +17,39 @@
 
 <fieldset>
     <legend> Obtener categorías por id</legend>
-    <input type="text" id="catIdInput" placeholder="ID">
+    <input type="text" id="catIdInput" placeholder="ID de Categoría">
     <button onclick="obtenerCategoriaPorId($('#catIdInput').val())">Obtener Categoría por ID</button>
 </fieldset>
 
 
 <fieldset>
     <legend> Agregar una nueva categoría</legend>
-    <input type="text" id="catNomInput" placeholder="Nombre de Categoría">
-    <input type="text" id="catObsInput" placeholder="Observaciones de Categoría">
+    <input type="text" id="catNomInput" placeholder="Nombre">
+    <input type="text" id="catObsInput" placeholder="Observaciones">
     <button onclick="agregarCategoria($('#catNomInput').val(), $('#catObsInput').val())">Agregar Categoría</button>
 </fieldset>
 <fieldset>
     <legend> Actualizar una categoría</legend>
-    <input type="text" id="updateCatIdInput" placeholder="ID de Categoría a Actualizar">
-    <input type="text" id="updateCatNomInput" placeholder="Nuevo Nombre de Categoría">
-    <input type="text" id="updateCatObsInput" placeholder="Nuevas Observaciones de Categoría">
+    <input type="text" id="updateCatIdInput" placeholder="ID">
+    <input type="text" id="updateCatNomInput" placeholder="Nuevo Nombre">
+    <input type="text" id="updateCatObsInput" placeholder="Nuevas Observaciones">
     <button onclick="actualizarCategoria($('#updateCatIdInput').val(), $('#updateCatNomInput').val(), $('#updateCatObsInput').val())">Actualizar Categoría</button>
 </fieldset>
 <fieldset>
     <legend> Eliminar una categoría</legend>
-    <input type="text" id="deleteCatIdInput" placeholder="ID de Categoría a Eliminar">
+    <input type="text" id="deleteCatIdInput" placeholder="ID a Eliminar">
     <button onclick="eliminarCategoria($('#deleteCatIdInput').val())">Eliminar Categoría</button>
 </fieldset>
 <fieldset>
     <legend> Agregar un producto a una categoría</legend>
     <input type="text" id="addProdCatIdInput" placeholder="ID de Categoría">
-    <input type="text" id="addProdNameInput" placeholder="Nombre del Producto">
-    <input type="text" id="addProdDescInput" placeholder="Descripción del Producto">
+    <input type="text" id="addProdNameInput" placeholder="Nombre Producto">
+    <input type="text" id="addProdDescInput" placeholder="Descripción">
     <button onclick="agregarProductoACategoria($('#addProdCatIdInput').val(), $('#addProdNameInput').val(), $('#addProdDescInput').val())">Agregar Producto a Categoría</button>
 </fieldset>
 <fieldset>
     <legend> Obtener productos por categoría</legend>
-    <input type="text" id="getProdCatIdInput" placeholder="ID de Categoría para Obtener Productos">
+    <input type="text" id="getProdCatIdInput" placeholder="ID de Categoría">
     <button onclick="obtenerProductosPorCategoria($('#getProdCatIdInput').val())">Obtener Productos por Categoría</button>
 </fieldset>
 <fieldset>
