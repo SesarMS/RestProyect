@@ -28,12 +28,4 @@
             $datos=$categoria->remove_categoria($body['cat_id']);
             echo json_encode('Remove correcto');
         break;
-        case "AddProducto":
-            $datos = $categoria->agregar_producto_a_categoria($body['cat_id'], $body['producto_nombre'], $body['producto_descripcion']);
-            echo json_encode('Producto agregado a la categoría');
-            break;
-        case "GetProductosPorCategoria":
-            $datos = $categoria->obtener_productos_por_categoria($body['cat_id']);
-            echo json_encode($datos);
-            break;
     }

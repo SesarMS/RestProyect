@@ -6,6 +6,8 @@
     <title>Panel de Control</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="./public/js/index.js"></script>
+    <script src="./public/js/categoria.js"></script>
+    <script src="./public/js/producto.js"></script>
     <link rel="stylesheet" href="./public/css/index.css">
 </head>
 <body>
@@ -42,15 +44,15 @@
 </fieldset>
 <fieldset>
     <legend> Agregar un producto a una categoría</legend>
-    <input type="text" id="addProdCatIdInput" placeholder="ID de Categoría">
+    <select id="selectorCategorias"></select>
     <input type="text" id="addProdNameInput" placeholder="Nombre Producto">
     <input type="text" id="addProdDescInput" placeholder="Descripción">
-    <button onclick="agregarProductoACategoria($('#addProdCatIdInput').val(), $('#addProdNameInput').val(), $('#addProdDescInput').val())">Agregar Producto a Categoría</button>
+    <button onclick="agregarProducto($('#addProdNameInput').val(), $('#addProdDescInput').val(),$('#selectorCategorias').val())">Agregar Producto a Categoría</button>
 </fieldset>
 <fieldset>
     <legend> Obtener productos por categoría</legend>
-    <input type="text" id="getProdCatIdInput" placeholder="ID de Categoría">
-    <button onclick="obtenerProductosPorCategoria($('#getProdCatIdInput').val())">Obtener Productos por Categoría</button>
+    <select id="selectorCategorias2"></select>
+    <button onclick="obtenerProductosPorCategoria($('#selectorCategorias2').val())">Obtener Productos por Categoría</button>
 </fieldset>
 <fieldset>
     <legend> Respuesta </legend>

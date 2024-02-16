@@ -84,6 +84,12 @@ class Categoria extends Conectar {
     public function remove_categoria($cat_id){
         $conectar = parent::conexion();
         parent::set_name();
+        
+        $sql1 = "DELETE FROM tm_producto WHERE CAT_ID = ?";
+        $sql1 = $conectar->prepare($sql1);
+        $sql1->bindValue(1, $cat_id);
+        $sql1->execute();
+
         $sql = "DELETE FROM tm_categoria WHERE cat_id = ?";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $cat_id);
@@ -110,23 +116,6 @@ class Categoria extends Conectar {
         $sql->bindValue(3, $cat_id);
         $sql->execute();
         return $sql->rowCount();
-    }
-
-    /**
-     * Obtiene todos los productos de una categoría específica.
-     *
-     * @param int $cat_id El ID de la categoría.
-     * @return array Un array asociativo con los productos de la categoría.
-     */
-    public function obtener_productos_por_categoria($cat_id) {
-        $conectar = parent::conexion();
-        parent::set_name();
-
-        $sql = "SELECT * FROM tm_producto WHERE CAT_ID = ?";
-        $sql = $conectar->prepare($sql);
-        $sql->bindValue(1, $cat_id);
-        $sql->execute();
-        return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
 }
