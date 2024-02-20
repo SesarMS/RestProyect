@@ -47,12 +47,12 @@
     <select id="selectorCategorias2"></select>
     <input type="text" id="addProdNameInput" placeholder="Nombre Producto">
     <input type="text" id="addProdDescInput" placeholder="Descripción">
-    <button onclick="agregarProducto($('#addProdNameInput').val(), $('#addProdDescInput').val(),$('#selectorCategorias').val())">Agregar Producto a Categoría</button>
+    <button onclick="agregarProducto($('#addProdNameInput').val(), $('#addProdDescInput').val(),$('#selectorCategorias2').val())">Agregar Producto a Categoría</button>
 </fieldset>
 <fieldset>
     <legend> Obtener productos por categoría</legend>
     <select id="selectorCategorias3"></select>
-    <button onclick="obtenerProductosPorCategoria($('#selectorCategorias2').val())">Obtener Productos por Categoría</button>
+    <button onclick="obtenerProductosPorCategoria($('#selectorCategorias3').val())">Obtener Productos por Categoría</button>
 </fieldset>
 <fieldset>
     <legend> Respuesta </legend>
