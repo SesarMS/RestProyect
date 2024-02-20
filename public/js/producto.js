@@ -15,6 +15,10 @@ function agregarProducto(producto_nombre, producto_descripcion,cat_id) {
             console.log(response);            
             $('#respuesta').text('');
             $('#respuesta').text('Agregado producto a categoría correctamente.');
+            setTimeout(function() {
+                location.reload();
+            }, 1000);
+            
         },
         error: function (error) {
             console.error('Error al agregar producto a la categoría:', error);

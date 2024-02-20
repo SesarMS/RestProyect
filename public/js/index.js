@@ -1,5 +1,4 @@
-
-// Ajustar automáticamente la altura del textarea según su contenido
+//Ajusta el tamaño del textArea
 function autoajustarTamañoTextarea() {
     var $textarea = $('#respuesta');
     $textarea.height(0);
@@ -7,34 +6,21 @@ function autoajustarTamañoTextarea() {
 
 }
 
-function cargarCategoriasSelector(){
+//Carga las categorías en un selector
+function cargarCategoriasSelector(selector) {
     $.ajax({
         url: 'controller/CategoriaController.php?op=GetAll',
         method: 'GET',
         dataType: 'json',
         success: function (data) {
             console.log(data);
-            
-            // Limpiar el selector antes de agregar las nuevas opciones
-            $('#selectorCategorias').empty();
-            $('#selectorCategorias2').empty();
-            
-            // Iterar sobre las categorías y agregarlas al selector
+            $(selector).empty();
             data.forEach(function(categoria) {
-                $('#selectorCategorias').append($('<option>', {
+                $(selector).append($('<option>', {
                     value: categoria.CAT_ID,
                     text: categoria.CAT_NOM
                 }));
             });
-            data.forEach(function(categoria) {
-                $('#selectorCategorias2').append($('<option>', {
-                    value: categoria.CAT_ID,
-                    text: categoria.CAT_NOM
-                }));
-            });
-
-            // Llamar a la función para ajustar el tamaño del textarea
-            autoajustarTamañoTextarea();
         },
         error: function (error) {
             console.error('Error al cargar categorías:', error);
@@ -42,6 +28,9 @@ function cargarCategoriasSelector(){
         }
     });
 }
+
 $(document).ready(function() {
-    cargarCategoriasSelector();
+    cargarCategoriasSelector('#selectorCategorias1');
+    cargarCategoriasSelector('#selectorCategorias2');
+    cargarCategoriasSelector('#selectorCategorias3');
 });

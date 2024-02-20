@@ -32,10 +32,10 @@
 </fieldset>
 <fieldset>
     <legend> Actualizar una categoría</legend>
-    <input type="text" id="updateCatIdInput" placeholder="ID">
+    <select id="selectorCategorias1"></select>
     <input type="text" id="updateCatNomInput" placeholder="Nuevo Nombre">
     <input type="text" id="updateCatObsInput" placeholder="Nuevas Observaciones">
-    <button onclick="actualizarCategoria($('#updateCatIdInput').val(), $('#updateCatNomInput').val(), $('#updateCatObsInput').val())">Actualizar Categoría</button>
+    <button onclick="actualizarCategoria($('#selectorCategorias1').val(), $('#updateCatNomInput').val(), $('#updateCatObsInput').val())">Actualizar Categoría</button>
 </fieldset>
 <fieldset>
     <legend> Eliminar una categoría</legend>
@@ -44,14 +44,14 @@
 </fieldset>
 <fieldset>
     <legend> Agregar un producto a una categoría</legend>
-    <select id="selectorCategorias"></select>
+    <select id="selectorCategorias2"></select>
     <input type="text" id="addProdNameInput" placeholder="Nombre Producto">
     <input type="text" id="addProdDescInput" placeholder="Descripción">
     <button onclick="agregarProducto($('#addProdNameInput').val(), $('#addProdDescInput').val(),$('#selectorCategorias').val())">Agregar Producto a Categoría</button>
 </fieldset>
 <fieldset>
     <legend> Obtener productos por categoría</legend>
-    <select id="selectorCategorias2"></select>
+    <select id="selectorCategorias3"></select>
     <button onclick="obtenerProductosPorCategoria($('#selectorCategorias2').val())">Obtener Productos por Categoría</button>
 </fieldset>
 <fieldset>

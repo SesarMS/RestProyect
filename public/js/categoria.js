@@ -51,6 +51,9 @@ function agregarCategoria(cat_nom, cat_obs) {
             console.log(response);
             $('#respuesta').text('');
             $('#respuesta').text('Agregado correctamente');
+            setTimeout(function() {
+                location.reload();
+            }, 1000);
             
         },
         error: function (error) {
@@ -72,6 +75,9 @@ function actualizarCategoria(cat_id, cat_nom, cat_obs) {
             console.log(response);
             $('#respuesta').text('');
             $('#respuesta').text('Actualizado correctamente.');
+            setTimeout(function() {
+                location.reload();
+            }, 1000);
             
         },
         error: function (error) {
@@ -93,6 +99,10 @@ function eliminarCategoria(cat_id) {
             console.log(response);            
             $('#respuesta').text('');
             $('#respuesta').text('Eliminado correctamente.');
+            setTimeout(function() {
+                location.reload();
+            }, 1000);
+            
         },
         error: function (error) {
             console.error('Error al eliminar categoría:', error);
